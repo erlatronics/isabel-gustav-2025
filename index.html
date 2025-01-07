@@ -3,10 +3,78 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
+  <title>Bröllopsinbjudan</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Hello World!</h1>
-  <p>Välkommen till min hemsida hostad på GitHub Pages!</p>
+  <nav class="navbar">
+    <ul>
+      <li><a href="#video">Video</a></li>
+      <li><a href="#faq">Frågor & Svar</a></li>
+      <li><a href="#invitation">Inbjudan</a></li>
+      <li><a href="#directions">Hitta hit</a></li>
+      <li><a href="#rsvp">OSA</a></li>
+    </ul>
+  </nav>
+
+  <section id="video">
+    <h1>Välkommen till vårt bröllop!</h1>
+    <div class="video-container">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <section id="faq">
+    <h2>Frågor & Svar</h2>
+    <div class="faq-item">
+      <button class="faq-question">När är bröllopet?</button>
+      <div class="faq-answer">Vi gifter oss den 15 juni 2024.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Var ska bröllopet hållas?</button>
+      <div class="faq-answer">Bröllopet hålls på Slottet i Stockholm.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Hur OSA jag?</button>
+      <div class="faq-answer">Du kan OSA genom formuläret i avsnittet OSA nedan.</div>
+    </div>
+  </section>
+
+  <section id="invitation">
+    <h2>Inbjudan</h2>
+    <p>Vi ser fram emot att fira denna dag med er!</p>
+  </section>
+
+  <section id="directions">
+    <h2>Hitta hit</h2>
+    <p>Här kommer en karta och vägbeskrivning.</p>
+  </section>
+
+  <section id="rsvp">
+    <h2>OSA</h2>
+    <form>
+      <label for="name">Namn:</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="attendance">Kommer du?</label>
+      <select id="attendance" name="attendance">
+        <option value="yes">Ja</option>
+        <option value="no">Nej</option>
+      </select>
+
+      <button type="submit">Skicka</button>
+    </form>
+  </section>
+
+  <script>
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      question.addEventListener('click', () => {
+        item.classList.toggle('active');
+      });
+    });
+  </script>
 </body>
 </html>
