@@ -45,6 +45,45 @@
       font-weight: bold;
     }
 
+    #menu-toggle {
+      display: none;
+    }
+
+    .menu-icon {
+      display: none;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .navbar ul {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        background: #f8f8f8;
+        width: 100%;
+        padding: 10px 0;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        z-index: 1000;
+      }
+
+      .navbar ul.active {
+        display: flex;
+      }
+
+      .menu-icon {
+        display: block;
+        color: #333;
+      }
+
+      .navbar a {
+        font-size: 1.2rem;
+        padding: 10px;
+      }
+    }
+
     #logo-screen {
       position: fixed;
       top: 0;
@@ -106,6 +145,7 @@
   </div>
 
   <nav class="navbar">
+    <span class="menu-icon" onclick="toggleMenu()">☰</span>
     <ul>
       <li><a href="index.html">Video</a></li>
       <li><a href="faq.html">Frågor & Svar</a></li>
@@ -123,6 +163,11 @@
   </section>
 
   <script>
+    function toggleMenu() {
+      const navbarMenu = document.querySelector('.navbar ul');
+      navbarMenu.classList.toggle('active');
+    }
+
     window.addEventListener('load', () => {
       const logoScreen = document.getElementById('logo-screen');
       const logoImage = logoScreen.querySelector('img');
