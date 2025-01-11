@@ -17,14 +17,14 @@ body {
     padding: 15px 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    opacity: 0; /* Osynlig som standard */
-    pointer-events: none; /* Förhindrar interaktion */
-    transition: opacity 2s ease; /* Fade-in effekt */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 2s ease;
   }
   
   .navbar.visible {
-    opacity: 1; /* Fade-in */
-    pointer-events: auto; /* Tillåter interaktion */
+    opacity: 1;
+    pointer-events: auto;
   }
   
   /* Desktop-menyn */
@@ -33,8 +33,8 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background: transparent; /* Genomskinlig bakgrund */
-    list-style: none; /* Ta bort punktlistor */
+    background: transparent;
+    list-style: none;
     margin: 0;
     padding: 0;
   }
@@ -59,19 +59,19 @@ body {
       left: 0;
       width: 100%;
       padding: 20px 0;
-      opacity: 0; /* Osynlig som standard */
-      pointer-events: none; /* Förhindrar interaktion när osynlig */
-      z-index: 1001; /* Högre än overlay */
-      transition: opacity 0.5s ease; /* Fade-in effekt */
+      opacity: 0;
+      pointer-events: none;
+      z-index: 1001;
+      transition: opacity 0.5s ease;
     }
   
     .navbar ul.active {
-      opacity: 1; /* Fade-in */
-      pointer-events: auto; /* Tillåter interaktion */
+      opacity: 1;
+      pointer-events: auto;
     }
   
     .menu-icon {
-      display: block; /* Visa menyikonen på små skärmar */
+      display: block;
       font-size: 2rem;
       cursor: pointer;
     }
@@ -82,26 +82,26 @@ body {
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(255, 255, 255, 0.7); /* Ljus overlay */
+      background: rgba(255, 255, 255, 0.7);
       z-index: 1000;
-      opacity: 0; /* Osynlig som standard */
-      pointer-events: none; /* Förhindrar interaktion */
-      transition: opacity 0.5s ease; /* Fade-in effekt */
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
     }
   
     .menu-overlay.active {
-      opacity: 1; /* Fade-in */
-      pointer-events: auto; /* Tillåter interaktion */
+      opacity: 1;
+      pointer-events: auto;
     }
   }
   
   @media (min-width: 769px) {
     .menu-icon {
-      display: none; /* Dölj menyikonen på breda skärmar */
+      display: none;
     }
   
     .menu-overlay {
-      display: none; /* Ingen overlay på breda skärmar */
+      display: none;
     }
   }
   
@@ -142,15 +142,30 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: calc(100vh - 80px); /* Anpassning för navbarens höjd */
-    padding-top: 20px;
-    text-align: center;
-    opacity: 0; /* Osynlig som standard */
-    transition: opacity 2s ease; /* Fade-in effekt */
+    min-height: calc(100vh - 80px); /* Anpassar till skärmen minus navbarens höjd */
+    padding: 20px; /* Luft runt innehållet */
+    width: 100%; /* Tar upp hela bredden av skärmen */
+    max-width: none; /* Ingen maxbredd på #video själv */
+    box-sizing: border-box; /* Tar hänsyn till padding i bredden */
   }
   
-  #video.visible {
-    opacity: 1; /* Fade-in */
+  .video-container {
+    width: 90%; /* Max 90 % av förälderns bredd */
+    max-width: 800px; /* Maximal bredd för videon */
+    margin: 20px auto; /* Centrerar innehållet horisontellt */
+  }
+  
+  .video-container iframe {
+    width: 100%; /* Fyller hela bredden av .video-container */
+    aspect-ratio: 16 / 9; /* Bibehåller rätt proportioner */
+    display: block; /* För korrekt centreringslayout */
+  }
+  
+  
+  @supports not (aspect-ratio: 16 / 9) {
+    .video-container iframe {
+      height: calc((9 / 16) * 100%);
+    }
   }
   
   /* Stars */
@@ -160,33 +175,30 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none; /* Förhindrar interaktion med stjärnorna */
-    z-index: -1; /* Placera stjärnorna längst bak */
-    overflow: hidden; /* Förhindrar att stjärnor visas utanför behållaren */
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
   }
   
   .star {
     position: absolute;
     background: white;
-    border-radius: 50%; /* Gör stjärnorna runda */
-    width: 3px; /* Standardstorlek om inget sätts av JavaScript */
-    height: 3px; /* Samma som bredd */
-    opacity: 0; /* Börjar osynliga */
-    transition: opacity 2s ease; /* Fade-in och fade-out-effekt */
+    border-radius: 50%;
+    width: 3px;
+    height: 3px;
+    opacity: 0;
+    transition: opacity 2s ease;
   }
-  
-  
-  
   
   /* Headline */
   h1 {
     font-family: 'Dancing Script', cursive;
-    font-size: clamp(2rem, 5vw, 3rem); /* Anpassad storlek */
-    max-width: 90%; /* Begränsar bredden */
-    margin: 0 auto; /* Centrerar rubriken */
+    font-size: clamp(2rem, 5vw, 3rem);
+    max-width: 90%;
+    margin: 0 auto;
     color: #b38728;
     text-align: center;
-    white-space: nowrap; /* Förhindrar radbrytning */
+    white-space: nowrap;
   }
   
   /* Hidden and Visible transitions */
