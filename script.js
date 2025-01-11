@@ -12,26 +12,36 @@ function toggleMenu() {
   function createStars() {
     const starsContainer = document.querySelector('.stars');
   
+    // Generera 100 stjärnor
     for (let i = 0; i < 100; i++) {
       const star = document.createElement('div');
       star.classList.add('star');
-      const size = Math.random() * 3 + 2; // Storlek mellan 2 och 5 px
+  
+      // Generera slumpmässig storlek mellan 2px och 5px
+      const size = Math.random() * 3 + 2; // Slumpmässig storlek mellan 2 och 5
       star.style.width = `${size}px`;
       star.style.height = `${size}px`;
+  
+      // Lägg till stjärnan i behållaren
       starsContainer.appendChild(star);
+  
+      // Placera och animera stjärnan
       teleportStar(star);
     }
   }
   
+  
   function teleportStar(star) {
-    star.style.left = `${Math.random() * 100}%`;
-    star.style.top = `${Math.random() * 100}%`;
+    star.style.left = `${Math.random() * 100}%`; // Slumpmässig position på X-axeln
+    star.style.top = `${Math.random() * 100}%`; // Slumpmässig position på Y-axeln
     star.style.opacity = '0';
   
+    // Fade-in efter en slumpmässig fördröjning
     setTimeout(() => {
       star.style.opacity = '1';
     }, Math.random() * 2000);
   
+    // Fade-out efter några sekunder och teleportera
     setTimeout(() => {
       star.style.opacity = '0';
       setTimeout(() => {
@@ -39,6 +49,10 @@ function toggleMenu() {
       }, 2000);
     }, 3000 + Math.random() * 2000);
   }
+  
+  // Anropa funktionen för att skapa stjärnor när sidan laddas
+  window.addEventListener('load', createStars);
+  
   
   window.addEventListener('load', () => {
     const logoScreen = document.getElementById('logo-screen');
@@ -54,14 +68,12 @@ function toggleMenu() {
     // Fade ut loggan
     setTimeout(() => {
       logoScreen.classList.add('hidden');
-      navbar.classList.add('visible');
     }, 2000);
   
-    // Paus innan video och rubrik fades in
+    // Paus innan navbar, video och rubrik fades in
     setTimeout(() => {
+      navbar.classList.add('visible'); // Fade in menyn
       videoSection.classList.remove('hidden');
-      videoSection.classList.add('visible');
+      videoSection.classList.add('visible'); // Fade in videon och rubriken
     }, 4500);
   });
-  
-  

@@ -17,6 +17,14 @@ body {
     padding: 15px 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+    opacity: 0; /* Osynlig som standard */
+    pointer-events: none; /* Förhindrar interaktion */
+    transition: opacity 2s ease; /* Fade-in effekt */
+  }
+  
+  .navbar.visible {
+    opacity: 1; /* Fade-in */
+    pointer-events: auto; /* Tillåter interaktion */
   }
   
   /* Desktop-menyn */
@@ -29,19 +37,15 @@ body {
     list-style: none; /* Ta bort punktlistor */
     margin: 0;
     padding: 0;
-    opacity: 1;
-    pointer-events: auto; /* Interaktiv alltid i desktop */
-    transition: none; /* Ingen animation på desktop */
   }
   
   .navbar a {
     text-decoration: none;
     font-weight: bold;
-    color: #5A3E36; /* Den bruna färgen */
+    color: #5A3E36;
     padding: 10px 15px;
     transition: color 0.3s ease;
   }
-  
   
   /* Hamburger-menyn */
   @media (max-width: 768px) {
@@ -141,18 +145,13 @@ body {
     min-height: calc(100vh - 80px); /* Anpassning för navbarens höjd */
     padding-top: 20px;
     text-align: center;
+    opacity: 0; /* Osynlig som standard */
+    transition: opacity 2s ease; /* Fade-in effekt */
   }
   
-  .video-container iframe {
-    width: 560px; /* Standardbredd */
-    height: 315px; /* Standardhöjd */
-    max-width: 90%; /* Begränsar bredden till max 90% av sidans bredd */
-    margin-top: 20px; /* Luft ovanför videon */
-    margin-left: auto; /* Centrerar videon horisontellt */
-    margin-right: auto; /* Centrerar videon horisontellt */
-    display: block; /* För säker centreringslayout */
+  #video.visible {
+    opacity: 1; /* Fade-in */
   }
-  
   
   /* Stars */
   .stars {
@@ -161,30 +160,34 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none;
-    z-index: -1;
-    overflow: hidden;
+    pointer-events: none; /* Förhindrar interaktion med stjärnorna */
+    z-index: -1; /* Placera stjärnorna längst bak */
+    overflow: hidden; /* Förhindrar att stjärnor visas utanför behållaren */
   }
   
   .star {
     position: absolute;
     background: white;
-    border-radius: 50%;
-    opacity: 0;
-    transition: opacity 2s ease;
+    border-radius: 50%; /* Gör stjärnorna runda */
+    width: 3px; /* Standardstorlek om inget sätts av JavaScript */
+    height: 3px; /* Samma som bredd */
+    opacity: 0; /* Börjar osynliga */
+    transition: opacity 2s ease; /* Fade-in och fade-out-effekt */
   }
+  
+  
+  
   
   /* Headline */
   h1 {
     font-family: 'Dancing Script', cursive;
-    font-size: clamp(2rem, 5vw, 3rem); /* Skalar mellan 2rem och 3rem baserat på skärmens bredd */
-    max-width: 90%; /* Begränsar bredden till max 90% av sidans bredd */
-    margin: 0 auto; /* Centrerar rubriken horisontellt */
-    color: #b38728; /* Mörkare guldton */
+    font-size: clamp(2rem, 5vw, 3rem); /* Anpassad storlek */
+    max-width: 90%; /* Begränsar bredden */
+    margin: 0 auto; /* Centrerar rubriken */
+    color: #b38728;
     text-align: center;
     white-space: nowrap; /* Förhindrar radbrytning */
   }
-  
   
   /* Hidden and Visible transitions */
   .hidden {
