@@ -11,6 +11,8 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      background: url('background.webp') no-repeat center center;
+      background-size: cover;
     }
 
     .navbar {
@@ -21,6 +23,12 @@
       padding: 10px 20px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       z-index: 1000;
+      opacity: 0;
+      transition: opacity 3s ease;
+    }
+
+    .navbar.visible {
+      opacity: 1;
     }
 
     .navbar ul {
@@ -37,9 +45,28 @@
       font-weight: bold;
     }
 
-    section {
-      padding: 80px 20px;
-      min-height: 100vh;
+    #logo-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      opacity: 0;
+      transition: opacity 3s ease;
+    }
+
+    #logo-screen.visible {
+      opacity: 1;
+    }
+
+    #logo-screen.hidden {
+      opacity: 0;
+      pointer-events: none;
     }
 
     #video {
@@ -47,6 +74,13 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      min-height: 100vh;
+      opacity: 0;
+      transition: opacity 3s ease;
+    }
+
+    #video.visible {
+      opacity: 1;
     }
 
     .video-container iframe {
@@ -54,69 +88,30 @@
       border-radius: 10px;
     }
 
-    #faq {
-      max-width: 800px;
-      margin: 0 auto;
+    #logo-screen img {
+      width: 400px;
+      height: auto;
+      opacity: 0;
+      transition: opacity 3s ease;
     }
 
-    .faq-item {
-      margin-bottom: 10px;
-    }
-
-    .faq-question {
-      width: 100%;
-      padding: 10px;
-      background: #eee;
-      border: none;
-      cursor: pointer;
-      text-align: left;
-      font-size: 16px;
-    }
-
-    .faq-answer {
-      padding: 10px;
-      display: none;
-      border: 1px solid #ddd;
-      border-top: none;
-    }
-
-    .faq-item.active .faq-answer {
-      display: block;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    input, select, button {
-      padding: 10px;
-      font-size: 16px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-    }
-
-    button {
-      background: #007BFF;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background: #0056b3;
+    #logo-screen img.visible {
+      opacity: 1;
     }
   </style>
 </head>
 <body>
+  <div id="logo-screen" class="visible">
+    <img src="logo.webp" alt="Bröllopslogga" />
+  </div>
+
   <nav class="navbar">
     <ul>
-      <li><a href="#video">Video</a></li>
-      <li><a href="#faq">Frågor & Svar</a></li>
-      <li><a href="#invitation">Inbjudan</a></li>
-      <li><a href="#directions">Hitta hit</a></li>
-      <li><a href="#rsvp">OSA</a></li>
+      <li><a href="index.html">Video</a></li>
+      <li><a href="faq.html">Frågor & Svar</a></li>
+      <li><a href="invitation.html">Inbjudan</a></li>
+      <li><a href="directions.html">Hitta hit</a></li>
+      <li><a href="rsvp.html">OSA</a></li>
     </ul>
   </nav>
 
@@ -127,56 +122,22 @@
     </div>
   </section>
 
-  <section id="faq">
-    <h2>Frågor & Svar</h2>
-    <div class="faq-item">
-      <button class="faq-question">När är bröllopet?</button>
-      <div class="faq-answer">Vi gifter oss den 15 juni 2024.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-question">Var ska bröllopet hållas?</button>
-      <div class="faq-answer">Bröllopet hålls på Slottet i Stockholm.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-question">Hur OSA jag?</button>
-      <div class="faq-answer">Du kan OSA genom formuläret i avsnittet OSA nedan.</div>
-    </div>
-  </section>
-
-  <section id="invitation">
-    <h2>Inbjudan</h2>
-    <p>Vi ser fram emot att fira denna dag med er!</p>
-  </section>
-
-  <section id="directions">
-    <h2>Hitta hit</h2>
-    <p>Här kommer en karta och vägbeskrivning.</p>
-  </section>
-
-  <section id="rsvp">
-    <h2>OSA</h2>
-    <form>
-      <label for="name">Namn:</label>
-      <input type="text" id="name" name="name" required />
-
-      <label for="attendance">Kommer du?</label>
-      <select id="attendance" name="attendance">
-        <option value="yes">Ja</option>
-        <option value="no">Nej</option>
-      </select>
-
-      <button type="submit">Skicka</button>
-    </form>
-  </section>
-
   <script>
-    const faqItems = document.querySelectorAll('.faq-item');
+    window.addEventListener('load', () => {
+      const logoScreen = document.getElementById('logo-screen');
+      const logoImage = logoScreen.querySelector('img');
+      const navbar = document.querySelector('.navbar');
+      const videoSection = document.getElementById('video');
 
-    faqItems.forEach(item => {
-      const question = item.querySelector('.faq-question');
-      question.addEventListener('click', () => {
-        item.classList.toggle('active');
-      });
+      setTimeout(() => {
+        logoImage.classList.add('visible');
+      }, 500); // 0.5 sekunder för att faden in loggan
+
+      setTimeout(() => {
+        logoScreen.classList.add('hidden');
+        navbar.classList.add('visible');
+        videoSection.classList.add('visible');
+      }, 3000); // 3 sekunder innan loggan fadear ut
     });
   </script>
 </body>
