@@ -1,216 +1,215 @@
 /* Global styles */
 body {
-    font-family: 'Playfair Display', serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background: url('background.webp') no-repeat center center;
-    background-size: cover;
-  }
-  
-  /* Navbar styles */
-  .navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
-    padding: 15px 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 2s ease;
-  }
-  
-  .navbar.visible {
-    opacity: 1;
-    pointer-events: auto;
-  }
-  
-  /* Desktop-menyn */
+  font-family: 'Playfair Display', serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: url('background.webp') no-repeat center center;
+  background-size: cover;
+}
+
+/* Navbar styles */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+  padding: 15px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 2s ease;
+}
+
+.navbar.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Desktop-menyn */
+.navbar ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #5A3E36;
+  padding: 10px 15px;
+  transition: color 0.3s ease;
+}
+
+/* Hamburger-menyn */
+@media (max-width: 768px) {
   .navbar ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    background: transparent;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .navbar a {
-    text-decoration: none;
-    font-weight: bold;
-    color: #5A3E36;
-    padding: 10px 15px;
-    transition: color 0.3s ease;
-  }
-  
-  /* Hamburger-menyn */
-  @media (max-width: 768px) {
-    .navbar ul {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background: white;
-      position: absolute;
-      top: 60px;
-      left: 0;
-      width: 100%;
-      padding: 20px 0;
-      opacity: 0;
-      pointer-events: none;
-      z-index: 1001;
-      transition: opacity 0.5s ease;
-    }
-  
-    .navbar ul.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-  
-    .menu-icon {
-      display: block;
-      font-size: 2rem;
-      cursor: pointer;
-    }
-  
-    .menu-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.7);
-      z-index: 1000;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.5s ease;
-    }
-  
-    .menu-overlay.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-  }
-  
-  @media (min-width: 769px) {
-    .menu-icon {
-      display: none;
-    }
-  
-    .menu-overlay {
-      display: none;
-    }
-  }
-  
-  /* Logo screen */
-  #logo-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2000;
-    opacity: 0;
-    transition: opacity 3s ease;
-  }
-  
-  #logo-screen.visible {
-    opacity: 1;
-  }
-  
-  #logo-screen.hidden {
-    opacity: 0;
-    pointer-events: none;
-  }
-  
-  #logo-screen img {
-    width: 90%;
-    max-width: 400px;
-    height: auto;
-  }
-  
-  /* Video section */
-  #video {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    min-height: calc(100vh - 80px); /* Anpassar till skärmen minus navbarens höjd */
-    padding: 20px; /* Luft runt innehållet */
-    width: 100%; /* Tar upp hela bredden av skärmen */
-    max-width: none; /* Ingen maxbredd på #video själv */
-    box-sizing: border-box; /* Tar hänsyn till padding i bredden */
+    background: white;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1001;
+    transition: opacity 0.5s ease;
   }
-  
-  .video-container {
-    width: 90%; /* Max 90 % av förälderns bredd */
-    max-width: 800px; /* Maximal bredd för videon */
-    margin: 20px auto; /* Centrerar innehållet horisontellt */
+
+  .navbar ul.active {
+    opacity: 1;
+    pointer-events: auto;
   }
-  
-  .video-container iframe {
-    width: 100%; /* Fyller hela bredden av .video-container */
-    aspect-ratio: 16 / 9; /* Bibehåller rätt proportioner */
-    display: block; /* För korrekt centreringslayout */
+
+  .menu-icon {
+    display: block;
+    font-size: 2rem;
+    cursor: pointer;
   }
-  
-  
-  @supports not (aspect-ratio: 16 / 9) {
-    .video-container iframe {
-      height: calc((9 / 16) * 100%);
-    }
-  }
-  
-  /* Stars */
-  .stars {
+
+  .menu-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    background: rgba(255, 255, 255, 0.7);
+    z-index: 1000;
+    opacity: 0;
     pointer-events: none;
-    z-index: -1;
-    overflow: hidden;
+    transition: opacity 0.5s ease;
   }
-  
-  .star {
-    position: absolute;
-    background: white;
-    border-radius: 50%;
-    width: 3px;
-    height: 3px;
-    opacity: 0;
-    transition: opacity 2s ease;
-  }
-  
-  /* Headline */
-  h1 {
-    font-family: 'Dancing Script', cursive;
-    font-size: clamp(2rem, 5vw, 3rem);
-    max-width: 90%;
-    margin: 0 auto;
-    color: #b38728;
-    text-align: center;
-    white-space: nowrap;
-  }
-  
-  /* Hidden and Visible transitions */
-  .hidden {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 2s ease, visibility 0s 2s;
-  }
-  
-  .visible {
+
+  .menu-overlay.active {
     opacity: 1;
-    visibility: visible;
-    transition: opacity 2s ease;
+    pointer-events: auto;
   }
-  
+}
+
+@media (min-width: 769px) {
+  .menu-icon {
+    display: none;
+  }
+
+  .menu-overlay {
+    display: none;
+  }
+}
+
+/* Logo screen */
+#logo-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  opacity: 0;
+  transition: opacity 3s ease;
+}
+
+#logo-screen.visible {
+  opacity: 1;
+}
+
+#logo-screen.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#logo-screen img {
+  width: 90%;
+  max-width: 400px;
+  height: auto;
+}
+
+/* Video section */
+#video {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 80px); /* Anpassar till skärmen minus navbarens höjd */
+  padding: 20px; /* Luft runt innehållet */
+  width: 100%; /* Tar upp hela bredden av skärmen */
+  max-width: none; /* Ingen maxbredd på #video själv */
+  box-sizing: border-box; /* Tar hänsyn till padding i bredden */
+}
+
+.video-container {
+  width: 90%; /* Max 90 % av förälderns bredd */
+  max-width: 800px; /* Maximal bredd för videon */
+  margin: 20px auto; /* Centrerar innehållet horisontellt */
+}
+
+.video-container iframe {
+  width: 100%; /* Fyller hela bredden av .video-container */
+  aspect-ratio: 16 / 9; /* Bibehåller rätt proportioner */
+  display: block; /* För korrekt centreringslayout */
+}
+
+
+@supports not (aspect-ratio: 16 / 9) {
+  .video-container iframe {
+    height: calc((9 / 16) * 100%);
+  }
+}
+
+/* Stars */
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  width: 3px;
+  height: 3px;
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+
+/* Headline */
+h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(2rem, 5vw, 3rem);
+  max-width: 90%;
+  margin: 0 auto;
+  color: #b38728;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Hidden and Visible transitions */
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 2s ease, visibility 0s 2s;
+}
+
+.visible {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 2s ease;
+}
