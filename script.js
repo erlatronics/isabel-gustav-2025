@@ -77,3 +77,10 @@ function toggleMenu() {
       videoSection.classList.add('visible'); // Fade in videon och rubriken
     }, 4500);
   });
+  document.querySelectorAll('.faq-question').forEach((button) => {
+    button.addEventListener('click', () => {
+      const answer = button.nextElementSibling; // Hitta svaret efter knappen
+      answer.classList.toggle('visible'); // Växla klassen 'visible'
+    });
+  });
+  
