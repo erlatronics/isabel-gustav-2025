@@ -280,3 +280,11 @@ h1 {
   opacity: 1; /* Blir synlig */
   padding: 10px; /* Lägger till padding när synlig */
 }
+
+#directions h1 {
+  text-align: center;
+  font-family: 'Dancing Script', cursive;
+  font-size: 3rem;
+  color: #5A3E36;
+  margin-bottom: 20px;
+}

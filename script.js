@@ -60,6 +60,7 @@ function toggleMenu() {
     const navbar = document.querySelector('.navbar');
     const videoSection = document.getElementById('video');
   
+    
     // Fade in loggan
     setTimeout(() => {
       logoImage.classList.add('visible');

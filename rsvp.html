@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OSA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    html, body {
+      overflow: hidden;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    .form-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 90vh; /* Justerat för att passa bättre på skärmen */
+      margin-top: 80px;
+    }
+    .form-container iframe {
+      width: 100%;
+      max-width: 600px;
+      height: 85vh; /* Justerat för att hela formuläret ska synas */
+      border-radius: 10px;
+      border: none;
+      overflow: auto;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar visible">
+    <span class="menu-icon" onclick="toggleMenu()">☰</span>
+    <ul>
+      <li><a href="index.html">Inbjudan</a></li>
+      <li><a href="faq.html">Frågor & Svar</a></li>
+      <li><a href="directions.html">Hitta hit</a></li>
+      <li><a href="rsvp.html">OSA</a></li>
+    </ul>
+    <div class="menu-overlay" onclick="toggleMenu()"></div>
+  </nav>
+
+  <section id="rsvp">
+    <div class="form-container">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeb_ZEFduYE6BXUdnHV_uaGFHZ87O6IUwLVOqKlADtmY4TzUw/viewform?embedded=true" allowfullscreen loading="lazy" frameborder="0" scrolling="yes">Läser in…</iframe>
+    </div>
+  </section>
+  
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hitta hit</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .info-box {
+      max-width: 800px;
+      margin: 100px auto;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    .map-container iframe {
+      width: 100%;
+      max-width: 600px;
+      height: 400px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar visible">
+    <span class="menu-icon" onclick="toggleMenu()">☰</span>
+    <ul>
+      <li><a href="index.html">Inbjudan</a></li>
+      <li><a href="faq.html">Frågor & Svar</a></li>
+      <li><a href="directions.html">Hitta hit</a></li>
+      <li><a href="rsvp.html">OSA</a></li>
+    </ul>
+    <div class="menu-overlay" onclick="toggleMenu()"></div>
+  </nav>
+
+  <section id="directions">
+    <div class="info-box">
+      <h1>Hitta hit</h1>
+      <p>Vår bröllopslokal ligger på en vacker plats och vi ser fram emot att fira denna dag med er. Här kan ni se en karta med vägbeskrivning:</p>
+      
+      <!-- Google Maps Embed -->
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d32562.900031541383!2d18.02163335463135!3d59.32992770118262!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465f9d5eb525c609%3A0xbb5b150a66729c0d!2sS%3At%20Jacobs%20kyrka!5e0!3m2!1ssv!2sse!4v1738263649428!5m2!1ssv!2sse" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      
+      <p>Behöver ni hjälp att hitta? Tveka inte att kontakta oss så guidar vi er rätt.</p>
+    </div>
+  </section>
+  
+  <script src="script.js"></script>
+</body>
+</html>
