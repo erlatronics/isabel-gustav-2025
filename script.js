@@ -69,7 +69,7 @@ function toggleMenu() {
     // Fade ut loggan
     setTimeout(() => {
       logoScreen.classList.add('hidden');
-    }, 2000);
+    }, 1000);
   
     // Paus innan navbar, video och rubrik fades in
     setTimeout(() => {
@@ -78,10 +78,38 @@ function toggleMenu() {
       videoSection.classList.add('visible'); // Fade in videon och rubriken
     }, 4500);
   });
+
+  function startCountdown(targetDate) {
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const target = new Date(targetDate).getTime();
+        const difference = target - now;
+
+        if (difference <= 0) {
+            document.getElementById("countdown").innerHTML = "Time's up!";
+            return;
+        }
+
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / (1000));
+
+        document.getElementById("countdown").innerHTML = 
+            `${days} dagar ${hours} timmar ${minutes} minuter ${seconds} sekunder`;
+    }
+
+    updateCountdown(); 
+    setInterval(updateCountdown, 1000);
+}
+
   document.querySelectorAll('.faq-question').forEach((button) => {
     button.addEventListener('click', () => {
       const answer = button.nextElementSibling; // Hitta svaret efter knappen
       answer.classList.toggle('visible'); // Växla klassen 'visible'
     });
   });
+  startCountdown("2025-05-24 13:30:00");
+
   
+ 
