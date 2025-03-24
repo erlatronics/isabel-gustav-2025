@@ -315,16 +315,29 @@ h1 {
   margin-bottom: 20px;
 }
 
+
+
 #countdown {
-  font-size: 2rem;
-  font-family:'Playfair Display', serif;
+  font-family: 'Playfair Display', serif;
   font-weight: bold;
   color: #5A3E36;
-  padding: 20px;
+  padding: 10px 20px;  /* Adjusted padding */
   border: 2px solid #b38728;
-  display: inline-block;
+  display: flex;  /* Makes text size adjust properly */
+  justify-content: center;
+  align-items: center;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.5);
+  
+  /* Responsive width */
+  max-width: 70%; /* Ensure the box doesn't get too wide */
+
+  /* More aggressive text scaling */
+  font-size: clamp(0.1rem, 3vw, 2rem);
+  white-space: nowrap; /* Prevents line breaks */
+  overflow: hidden; /* Ensures text stays inside */
+  
+  /* Center at the bottom */
   position: absolute;
   bottom: 20px;
   left: 50%;
