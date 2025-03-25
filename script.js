@@ -109,6 +109,12 @@ function toggleMenu() {
       answer.classList.toggle('visible'); // Växla klassen 'visible'
     });
   });
+  document.querySelectorAll('.faq-question2').forEach((button) => {
+    button.addEventListener('click', () => {
+      const answer = button.nextElementSibling; // Hitta svaret efter knappen
+      answer.classList.toggle('visible'); // Växla klassen 'visible'
+    });
+  });
   startCountdown("2025-05-24 13:30:00");
 
   
